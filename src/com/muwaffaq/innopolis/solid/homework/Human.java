@@ -1,35 +1,36 @@
 package com.muwaffaq.innopolis.solid.homework;
 
+import com.muwaffaq.innopolis.solid.homework.languages.*;
 
-import java.util.List;
 
-// lab work
-// This Class violates all SOLID Principles, fix it in a Logical way
 public class Human implements Needs {
 
     private String name;
     private String nickname;
-    private double salary;
-    private List<String> hobbies;
+    private Hobbies hobbies;
+    private Business business;
 
-    enum Languages {Arabic, English, Japanese}
-
-    String sayHello(Languages languages) {
-        if (languages == Languages.Arabic)
-            return "مرحبا";
-        return "Hello";
+    public String getName() {
+        return name;
     }
 
-    void calculateTax(int percentage) {
-        salary = salary * percentage;
+    public String getNickname() {
+        return nickname;
     }
 
-    int addHobby(String hobby) {
-        hobbies.add(hobby);
-        return hobbies.size();
+    public Hobbies getHobbies() {
+        return hobbies;
     }
 
-    void creatNickName(String postFix) {
+    public Business getBusiness() {
+        return business;
+    }
+
+    String sayHello(Language language) {
+        return language.getGreeting();
+    }
+
+    void createNickName(String postFix) {
         nickname = name.concat(postFix);
     }
 
@@ -38,28 +39,12 @@ public class Human implements Needs {
     }
 
     @Override
-    public void playSports() {
-
-    }
-
-    @Override
     public void getMarried() {
-
-    }
-
-    @Override
-    public void ownCompany() {
-
-    }
-
-    @Override
-    public void becomeEmployee() {
-
     }
 
     public static void main(String[] args) {
         Human human = new Human();
-        human.sayHello(Languages.Arabic);
+        System.out.println(human.sayHello(new Arabic()));
     }
 
 }
